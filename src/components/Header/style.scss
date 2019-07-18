@@ -1,0 +1,33 @@
+.caledar__page--header {
+    background-color: #F2F3F2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    width: 100%;
+    height: 3vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    justify-content: center;
+
+    #monthly {
+            border-top-left-radius: 10%;
+            border-bottom-left-radius: 10%;
+            border-right: none;
+    }
+
+    #yearly {
+        border-top-right-radius: 10%;
+        border-bottom-right-radius: 10%;
+    }
+
+    button {
+        background-color: transparent;
+        border: 1px solid #dc5249;
+        padding-left: 30px;
+        padding-right: 30px;
+        cursor: pointer;
+        color: #dc5249;
+        font-weight: 600;
+    }
+}

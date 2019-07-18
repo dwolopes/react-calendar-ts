@@ -9,7 +9,6 @@ import { ToastContainer } from 'react-toastify';
 import { loading, persistPlugin } from './utils/config-state';
 import Routes from './routes';
 import models from './state';
-import Loading from './components/Loading';
 
 
 const store = init({
@@ -24,7 +23,6 @@ const App = () => (
     <Provider store={store} >
       <BrowserRouter>
         <Routes/>
-        <Loading/>
       </BrowserRouter>
     </Provider>
     <ToastContainer/>
