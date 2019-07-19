@@ -29,5 +29,12 @@
         cursor: pointer;
         color: #dc5249;
         font-weight: 600;
+
+        &.active {
+            background-color: #dc5249;
+            color: #F2F3F2;
+            outline-style: none;
+        }
     }
+
 }
