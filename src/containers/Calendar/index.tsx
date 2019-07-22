@@ -2,6 +2,7 @@ import React, { memo, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
+import handleFactory from './handleFactory';
 import Header from '../../components/Header';
 
 
@@ -13,13 +14,35 @@ interface CalendarProps {
 };
 
 const Calendar = ({calendar, getHolidays}: CalendarProps) => {
-    const [period, setPeriod] = useState<string>('yearly');
+    const [period, setPeriod] = useState<string>('monthly');
+    const [date, setDate] = useState<string>(moment().format('YYYY-MM-DD'));
+    const [year, setYear] = useState<number>(moment().get('year'));
 
-    useEffect(() => console.log('period', period), [period]);
+    const handleDate = (date: string) => {
+        const newYear = moment(date).get('year');
+
+        if (year !== newYear) {
+            setYear(newYear);
+        }
+        setDate(date);
+    }
+
+    console.log('Calendar', calendar);
+
+    useEffect(() => getHolidays(moment().set('year', year).get('year')), [getHolidays, year]);
+
+    const Component = handleFactory(period);
 
     return (
-        <div>
+        <div className="calendar__page">
             <Header period={period}  setPeriod={setPeriod} />
+            <Component
+                setPeriod={setPeriod}
+                handleDate={handleDate}
+                initialDate={date}
+                holidays={calendar.holidays[year] || []}
+                year={year}
+            />
         </div>
     )
 
