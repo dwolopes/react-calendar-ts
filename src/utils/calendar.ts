@@ -1,15 +1,15 @@
 export const months = [
-	'Janeiro',
-	'Fevereiro',
-	'Março',
+	'Jan',
+	'Fev',
+	'Mar',
 	'Abril',
-	'Junho',
-	'Julho',
-	'Agosto',
-	'Setembro',
-	'Outubro',
-	'Novembro',
-	'Dezembro',
+	'Jun',
+	'Jul',
+	'Ago',
+	'Set',
+	'Out',
+	'Nov',
+	'Dez',
 ];
 
 export const daysOfTheweek = [

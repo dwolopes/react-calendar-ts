@@ -36,11 +36,20 @@ const Monthly = ({initialDate, holidays, handleDate}: MonthlyProps) => {
     });
 
     return (
-        <animated.div className="calendar__page--content-month" style={props}>
-            <div className="info">
-                <div className="date">
-                    {months[moment(initialDate).get('month')]} de {moment(initialDate).get('year')}
-                </div>
+        <animated.div className="calendar__page--content" style={props}>
+            <div className="actions">
+                <button
+                    type="button"
+                    onClick={() => console.log('Cliquei no passado')} 
+                >
+                    Ontem
+                </button>
+                <button type="button" onClick={() => console.log('Cliquei no hoje')}>
+                    Hoje
+                </button>
+                <button type="button" onClick={() => console.log('Cliquei no futuro ')}>
+                    Amanhã
+                </button>
             </div>
         </animated.div>
     );

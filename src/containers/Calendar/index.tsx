@@ -5,6 +5,8 @@ import moment from 'moment';
 import handleFactory from './handleFactory';
 import Header from '../../components/Header';
 
+import './style.scss';
+
 
 interface CalendarProps {
     calendar: {
@@ -35,7 +37,7 @@ const Calendar = ({calendar, getHolidays}: CalendarProps) => {
 
     return (
         <div className="calendar__page">
-            <Header period={period}  setPeriod={setPeriod} />
+            <Header period={period}  setPeriod={setPeriod} initialDate={date}/>
             <Component
                 setPeriod={setPeriod}
                 handleDate={handleDate}

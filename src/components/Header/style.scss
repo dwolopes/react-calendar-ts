@@ -1,40 +1,54 @@
 .caledar__page--header {
-    background-color: #F2F3F2;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    display: flex;
-    width: 100%;
-    height: 3vh;
-    position: absolute;
-    top: 0;
-    right: 0;
-    justify-content: center;
+	background-color: #ebebeb;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: flex;
+	flex-direction: row;
+	height: 3vh;
+	justify-content: center;
+	position: relative;
 
-    #monthly {
-            border-top-left-radius: 10%;
-            border-bottom-left-radius: 10%;
-            border-right: none;
-    }
+	.info {
+		position: absolute; // Como fazer isso usando somente display flex e colocando o titulo somente com grid
+		left: 0;
+		display: flex;
+		font-family: 'Gotham Bold';
+		font-size: 30px;
+		align-self: center;
+		padding-right: 30px;
 
-    #yearly {
-        border-top-right-radius: 10%;
-        border-bottom-right-radius: 10%;
-    }
-
-    button {
-        background-color: transparent;
-        border: 1px solid #dc5249;
-        padding-left: 30px;
-        padding-right: 30px;
-        cursor: pointer;
-        color: #dc5249;
-        font-weight: 600;
-
-        &.active {
-            background-color: #dc5249;
-            color: #F2F3F2;
-            outline-style: none;
+        b {
+            padding-right: 5px;
         }
-    }
+	}
 
+	#monthly {
+		border-top-left-radius: 10%;
+		border-bottom-left-radius: 10%;
+		border-right: none;
+        @media (max-width: 600px) {
+			margin-left: 100px;
+		}
+	}
+
+	#yearly {
+		border-top-right-radius: 10%;
+		border-bottom-right-radius: 10%;
+	}
+
+	button {
+		background-color: transparent;
+		border: 1px solid #dc5249;
+		padding-left: 30px;
+		padding-right: 30px;
+		cursor: pointer;
+		color: #dc5249;
+		font-weight: 600;
+
+		&.active {
+			background-color: #dc5249;
+			color: #f2f3f2;
+			outline-style: none;
+		}
+	}
 }
