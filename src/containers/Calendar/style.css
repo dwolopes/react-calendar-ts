@@ -1,0 +1,10 @@
+.calendar__page {
+  background-color: #F2F3F2;
+  height: 98vh;
+}
+
+.calendar__page .calendar__page--content .date {
+  font-family: 'Gotham Bold';
+  font-size: 30px;
+}
+/*# sourceMappingURL=style.css.map */

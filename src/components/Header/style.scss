@@ -5,17 +5,21 @@
 	display: flex;
 	flex-direction: row;
 	height: 3vh;
-	justify-content: center;
 	position: relative;
 
+	.actions {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+	}
+
 	.info {
-		position: absolute; // Como fazer isso usando somente display flex e colocando o titulo somente com grid
 		left: 0;
 		display: flex;
 		font-family: 'Gotham Bold';
 		font-size: 30px;
 		align-self: center;
-		padding-right: 30px;
+		justify-content: flex-start;
 
         b {
             padding-right: 5px;

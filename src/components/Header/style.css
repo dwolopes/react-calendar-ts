@@ -1,0 +1,78 @@
+.caledar__page--header {
+  background-color: #ebebeb;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 3vh;
+  position: relative;
+}
+
+.caledar__page--header .actions {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.caledar__page--header .info {
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: 'Gotham Bold';
+  font-size: 30px;
+  -ms-flex-item-align: center;
+      align-self: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.caledar__page--header .info b {
+  padding-right: 5px;
+}
+
+.caledar__page--header #monthly {
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+  border-right: none;
+}
+
+@media (max-width: 600px) {
+  .caledar__page--header #monthly {
+    margin-left: 100px;
+  }
+}
+
+.caledar__page--header #yearly {
+  border-top-right-radius: 10%;
+  border-bottom-right-radius: 10%;
+}
+
+.caledar__page--header button {
+  background-color: transparent;
+  border: 1px solid #dc5249;
+  padding-left: 30px;
+  padding-right: 30px;
+  cursor: pointer;
+  color: #dc5249;
+  font-weight: 600;
+}
+
+.caledar__page--header button.active {
+  background-color: #dc5249;
+  color: #f2f3f2;
+  outline-style: none;
+}
+/*# sourceMappingURL=style.css.map */

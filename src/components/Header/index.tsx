@@ -20,16 +20,22 @@ const Header = ({ period, setPeriod, initialDate }: HeaderProps) => (
 				{moment(initialDate).get('year')}
 			</div>
 		</div>
-		<button
-			className={classnames({ active: period === 'monthly' })}
-			onClick={() => setPeriod('monthly')}
-			id="monthly"
-		>
-			Mês
-		</button>
-		<button className={classnames({ active: period === 'yearly' })} onClick={() => setPeriod('yearly')} id="yearly">
-			Ano
-		</button>
+		<div className="actions">
+			<button
+				className={classnames({ active: period === 'monthly' })}
+				onClick={() => setPeriod('monthly')}
+				id="monthly"
+			>
+				Mês
+			</button>
+			<button
+				className={classnames({ active: period === 'yearly' })}
+				onClick={() => setPeriod('yearly')}
+				id="yearly"
+			>
+				Ano
+			</button>
+		</div>
 	</div>
 );
 
