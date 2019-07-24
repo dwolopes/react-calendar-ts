@@ -3,23 +3,18 @@
 	padding-top: 10px;
 	padding-bottom: 10px;
 	display: flex;
-	flex-direction: row;
 	height: 3vh;
-	position: relative;
 
 	.actions {
-		flex: 1;
 		display: flex;
+		flex: 1;
 		justify-content: center;
 	}
 
 	.info {
-		left: 0;
-		display: flex;
 		font-family: 'Gotham Bold';
 		font-size: 30px;
 		align-self: center;
-		justify-content: flex-start;
 
         b {
             padding-right: 5px;
@@ -30,9 +25,6 @@
 		border-top-left-radius: 10%;
 		border-bottom-left-radius: 10%;
 		border-right: none;
-        @media (max-width: 600px) {
-			margin-left: 100px;
-		}
 	}
 
 	#yearly {

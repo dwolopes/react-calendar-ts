@@ -29,8 +29,6 @@ const Calendar = ({calendar, getHolidays}: CalendarProps) => {
         setDate(date);
     }
 
-    console.log('Calendar', calendar);
-
     useEffect(() => getHolidays(moment().set('year', year).get('year')), [getHolidays, year]);
 
     const Component = handleFactory(period);

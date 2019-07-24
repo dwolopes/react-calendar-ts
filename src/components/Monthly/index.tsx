@@ -3,7 +3,8 @@ import moment from 'moment';
 import classnames from 'classnames';
 import { animated, useSpring } from 'react-spring';
 
-import { months, daysOfTheweek } from '../../utils/calendar';
+import { months, daysOfTheweek, getDaysBetweenMonths } from '../../utils/calendar';
+import { ReactComponent as Arrowhead } from '../../assets/icons/arrowheads-of-thin-outline-to-the-left.svg';
 import './style.scss';
 
 interface MonthlyProps {
@@ -22,7 +23,8 @@ const Monthly = ({initialDate, holidays, handleDate}: MonthlyProps) => {
         setMonth(moment(date).get('month'));
         handleDate(date);
     }
-
+    
+    useEffect(() => getDaysBetweenMonths(moment(initialDate).get('month'), moment(initialDate).get('year'), holidays), [month]);
 
     const props = useSpring({
         from: {
@@ -40,15 +42,14 @@ const Monthly = ({initialDate, holidays, handleDate}: MonthlyProps) => {
             <div className="actions">
                 <button
                     type="button"
-                    onClick={() => console.log('Cliquei no passado')} 
-                >
-                    Ontem
+                    onClick={() => handleMonth(moment(initialDate).subtract(1, 'months').format('YYYY-MM-DD'))} >
+                    <Arrowhead/>
                 </button>
                 <button type="button" onClick={() => console.log('Cliquei no hoje')}>
                     Hoje
                 </button>
-                <button type="button" onClick={() => console.log('Cliquei no futuro ')}>
-                    Amanhã
+                <button type="button" onClick={() => handleMonth(moment(initialDate).add(1, 'months').format('YYYY-MM-DD'))}>
+                    <Arrowhead/>
                 </button>
             </div>
         </animated.div>
