@@ -24,7 +24,10 @@ const Monthly = ({initialDate, holidays, handleDate}: MonthlyProps) => {
         handleDate(date);
     }
     
-    useEffect(() => getDaysBetweenMonths(moment(initialDate).get('month'), moment(initialDate).get('year'), holidays), [month]);
+    useEffect(() => {
+        const detailedMonth = getDaysBetweenMonths(initialDate, holidays)
+        setObjectMonth(detailedMonth.detailedDaysArray);
+        }, [month, holidays, initialDate]);
 
     const props = useSpring({
         from: {
