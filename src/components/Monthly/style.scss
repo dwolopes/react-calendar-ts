@@ -1,31 +1,46 @@
-.calendar__page--content {
-	.actions {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        padding-top: 20px;
-		button {
-			background-color: #F2F3F2;
-			padding-left: 30px;
-			padding-right: 30px;
-			cursor: pointer;
-			color: #dc5249;
-			font-weight: 600;
-			outline: none;
-            border: none;
+.calendar__page--month {
+	.week {
+		padding-top: 30px;
+		display: grid;
+		grid-template-columns: repeat(7, minmax(70px, 1fr));
+		.day {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			color: black;
+			font-family: 'Gotham Bold';
+			font-size: 13px;
+		}
+	}
+	.month {
+		padding-top: 10px;
+		display: grid;
+		grid-template-columns: repeat(7, minmax(70px, 1fr));
 
-			svg {
-				height: 10px;
-				width: 10px;
-				path {
-					transition: 0.3s ease-in-out all;
-					fill: #dc5249;
-				}
+		.day {
+			height: 118px;
+			border-top: 1px solid black;
+			&.disabled {
+				color: gray;
+				background-color: #ebebeb;
+				border-top: none;
 			}
+		}
 
-			&:nth-child(3) {
-				svg {
-					transform: rotate(180deg);
+		.content {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			align-content: space-evenly;
+			height: 100%;
+			.date {
+				display: flex;
+				justify-content: center;
+				width: 100%;
+				color: black;
+				&.disabled {
+					color: gray;
 				}
 			}
 		}

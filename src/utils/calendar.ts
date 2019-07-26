@@ -64,7 +64,7 @@ const getDaysBetweenDates = (date: moment.Moment, endDate: moment.Moment, holida
 			weekDay: moment(date).isoWeekday(),
 			formatedDate: moment(date).get('date'),
 			holiday: holidays.find((holiday: { date: string }) => holiday.date === moment(date).format('YYYY-MM-DD')),
-			disabled: moment(endDate)
+			disabled: !moment(endDate)
 				.startOf('month')
 				.isSameOrBefore(moment(date)),
 		});

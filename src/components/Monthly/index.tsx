@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import moment from 'moment';
+import moment, { weekdays } from 'moment';
 import classnames from 'classnames';
 import { animated, useSpring } from 'react-spring';
 
@@ -8,56 +8,107 @@ import { ReactComponent as Arrowhead } from '../../assets/icons/arrowheads-of-th
 import './style.scss';
 
 interface MonthlyProps {
-    initialDate: string,
-    year: number,
-    holidays: [],
-    handleDate: (value: string) => void,
-    setPeriod: (value: string) => void
+	initialDate: string;
+	year: number;
+	holidays: [];
+	handleDate: (value: string) => void;
+	setPeriod: (value: string) => void;
 }
 
-const Monthly = ({initialDate, holidays, handleDate}: MonthlyProps) => {
-    const [arrayMonth, setObjectMonth] = useState<any>([]);
-    const [month, setMonth] = useState<number>(moment(initialDate).get('month'));
+const Monthly = ({ initialDate, holidays, handleDate }: MonthlyProps) => {
+	const [arrayMonth, setObjectMonth] = useState<any>([]);
+	const [month, setMonth] = useState<number>(moment(initialDate).get('month'));
 
-    const handleMonth = (date: string) => {
-        setMonth(moment(date).get('month'));
-        handleDate(date);
-    }
-    
-    useEffect(() => {
-        const detailedMonth = getDaysBetweenMonths(initialDate, holidays)
-        setObjectMonth(detailedMonth.detailedDaysArray);
-        }, [month, holidays, initialDate]);
+	const handleMonth = (date: string) => {
+		setMonth(moment(date).get('month'));
+		handleDate(date);
+	};
 
-    const props = useSpring({
-        from: {
-            opacity: 0,
-            transform: 'translate3d(0,150px,0)',
-        },
-        to: {
-            opacity: 1,
-            transform: 'translate(0,0,0)',
-        },
-    });
+	useEffect(() => {
+		const detailedMonth = getDaysBetweenMonths(initialDate, holidays);
+		setObjectMonth(detailedMonth.detailedDaysArray);
+        console.log('arrayMonth', arrayMonth);
+	}, [month, holidays, initialDate]);
 
-    return (
-        <animated.div className="calendar__page--content" style={props}>
-            <div className="actions">
-                <button
-                    type="button"
-                    onClick={() => handleMonth(moment(initialDate).subtract(1, 'months').format('YYYY-MM-DD'))} >
-                    <Arrowhead/>
-                </button>
-                <button type="button" onClick={() => console.log('Cliquei no hoje')}>
-                    Hoje
-                </button>
-                <button type="button" onClick={() => handleMonth(moment(initialDate).add(1, 'months').format('YYYY-MM-DD'))}>
-                    <Arrowhead/>
-                </button>
-            </div>
-        </animated.div>
-    );
+	const props = useSpring({
+		from: {
+			opacity: 0,
+			transform: 'translate3d(0,150px,0)',
+		},
+		to: {
+			opacity: 1,
+			transform: 'translate(0,0,0)',
+		},
+	});
 
-}
+	return (
+		<animated.div className="calendar__page--content" style={props}>
+			<div className="actions">
+				<button
+					type="button"
+					onClick={() =>
+						handleMonth(
+							moment(initialDate)
+								.subtract(1, 'months')
+								.format('YYYY-MM-DD')
+						)
+					}
+				>
+					<Arrowhead />
+				</button>
+				<button type="button" onClick={() => handleMonth(moment().format('YYYY-MM-DD'))}>
+					Hoje
+				</button>
+				<button
+					type="button"
+					onClick={() =>
+						handleMonth(
+							moment(initialDate)
+								.add(1, 'months')
+								.format('YYYY-MM-DD')
+						)
+					}
+				>
+					<Arrowhead />
+				</button>
+			</div>
+			<div className="calendar__page--month">
+				<div className="week">
+					{daysOfTheweek.map(day => (
+						<div className="day" key={day}>
+							{day}
+						</div>
+					))}
+				</div>
+				<div className="month">
+					{arrayMonth.map(
+						(
+							day: {
+								disabled: any;
+								formatedDate: string;
+								weekDay: number;
+								holiday: { name: string; type: string };
+							},
+							index: number
+						) => {
+							return (
+								<div
+									key={`${day.formatedDate}-${index}`}
+									className={classnames({ day: true, disabled: day.disabled })}
+								>
+									<div className="content">
+                                        <div className={classnames({ date: true, disabled: day.weekDay === 7 })}>
+                                            <p>{day.formatedDate}</p>
+                                        </div>
+                                    </div>
+								</div>
+							);
+						}
+					)}
+				</div>
+			</div>
+		</animated.div>
+	);
+};
 
 export default Monthly;

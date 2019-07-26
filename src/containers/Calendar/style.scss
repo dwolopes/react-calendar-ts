@@ -1,10 +1,41 @@
 .calendar__page {
-    background-color: #F2F3F2;
-    height: 98vh;
-    .calendar__page--content {
-        .date {
-            font-family: 'Gotham Bold';
-            font-size: 30px;
-        }
-    }
+	background-color: #f2f3f2;
+	height: 98vh;
+	.calendar__page--content {
+		.actions {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			padding-top: 20px;
+			.date {
+				font-family: 'Gotham Bold';
+				font-size: 30px;
+			}
+			button {
+				background-color: #f2f3f2;
+				padding-left: 30px;
+				padding-right: 30px;
+				cursor: pointer;
+				color: #dc5249;
+				font-weight: 600;
+				outline: none;
+				border: none;
+
+				svg {
+					height: 10px;
+					width: 10px;
+					path {
+						transition: 0.3s ease-in-out all;
+						fill: #dc5249;
+					}
+				}
+
+				&:nth-child(3) {
+					svg {
+						transform: rotate(180deg);
+					}
+				}
+			}
+		}
+	}
 }
