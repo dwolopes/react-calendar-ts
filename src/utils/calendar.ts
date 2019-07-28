@@ -5,8 +5,8 @@ export const getDaysBetweenMonths = (date: string, holidays: []) => {
 	/**
 	 * conferir se são inteiros válidos, caso não, pegar a data do dia
 	 */
-	let referenceMonth = {};
-	let referenceYear = {};
+	let referenceMonth = moment(date).get('month');
+	let referenceYear = moment(date).get('year');
 
 	if (!isSafeInteger(referenceMonth) || !isSafeInteger(referenceYear)) {
 		referenceMonth = moment().get('month');
@@ -49,7 +49,7 @@ const getCurrentPeriod = (date: string) => {
 	const startDate = baseDate
 		.clone()
 		.startOf('month')
-		.subtract(weekDay !== 7 ? weekDay : 0);
+		.subtract(weekDay !== 7 ? weekDay : 0, 'days');
 
 	return {
 		startDate,
@@ -62,6 +62,7 @@ const getDaysBetweenDates = (date: moment.Moment, endDate: moment.Moment, holida
 	while (date <= endDate) {
 		dateArray.push({
 			weekDay: moment(date).isoWeekday(),
+			date: moment(date).format('YYYY-MM-DD'),
 			formatedDate: moment(date).get('date'),
 			holiday: holidays.find((holiday: { date: string }) => holiday.date === moment(date).format('YYYY-MM-DD')),
 			disabled: !moment(endDate)
@@ -73,6 +74,6 @@ const getDaysBetweenDates = (date: moment.Moment, endDate: moment.Moment, holida
 	return dateArray;
 };
 
-export const months = ['Jan', 'Fev', 'Mar', 'Abril', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+export const months = ['Jan', 'Fev', 'Mar', 'Abril', 'Maio' ,'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
 
 export const daysOfTheweek = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];

@@ -1,6 +1,6 @@
 .calendar__page {
 	background-color: #f2f3f2;
-	height: 98vh;
+	height: 100%;
 	.calendar__page--content {
 		.actions {
 			display: flex;
@@ -12,7 +12,7 @@
 				font-size: 30px;
 			}
 			button {
-				background-color: #f2f3f2;
+				background-color:transparent;
 				padding-left: 30px;
 				padding-right: 30px;
 				cursor: pointer;

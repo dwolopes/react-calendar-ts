@@ -16,32 +16,49 @@
 		padding-top: 10px;
 		display: grid;
 		grid-template-columns: repeat(7, minmax(70px, 1fr));
-
 		.day {
-			height: 118px;
-			border-top: 1px solid black;
+			height: 80px;
+			.content {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+				align-content: space-evenly;
+				height: 100%;
+				border-top:1px solid black;
+				.date {
+					display: flex;
+					justify-content: center;
+					width: 100%;
+					color: black;
+					&.disabled {
+						color: gray;
+					}
+					position: relative;
+				.today {
+					position: absolute;
+    				background-color: #E04134;
+    				border-radius: 25px;
+    				width: 29px;
+    				height: 29px;
+    				display: flex;
+    				justify-content: center;
+    				top: 7px;
+
+					&:first-child{
+						display: flex;
+    					/* justify-content: center; */
+						align-items: center;
+						color: white;
+						font-weight: 600;
+					}
+				}
+			}
+		}
 			&.disabled {
 				color: gray;
 				background-color: #ebebeb;
 				border-top: none;
-			}
-		}
-
-		.content {
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			align-items: center;
-			align-content: space-evenly;
-			height: 100%;
-			.date {
-				display: flex;
-				justify-content: center;
-				width: 100%;
-				color: black;
-				&.disabled {
-					color: gray;
-				}
 			}
 		}
 	}

@@ -18,6 +18,7 @@ interface MonthlyProps {
 const Monthly = ({ initialDate, holidays, handleDate }: MonthlyProps) => {
 	const [arrayMonth, setObjectMonth] = useState<any>([]);
 	const [month, setMonth] = useState<number>(moment(initialDate).get('month'));
+	const [todayDate, setTodayDate] = useState<string>(moment().format('YYYY-MM-DD'))
 
 	const handleMonth = (date: string) => {
 		setMonth(moment(date).get('month'));
@@ -27,7 +28,6 @@ const Monthly = ({ initialDate, holidays, handleDate }: MonthlyProps) => {
 	useEffect(() => {
 		const detailedMonth = getDaysBetweenMonths(initialDate, holidays);
 		setObjectMonth(detailedMonth.detailedDaysArray);
-        console.log('arrayMonth', arrayMonth);
 	}, [month, holidays, initialDate]);
 
 	const props = useSpring({
@@ -86,6 +86,7 @@ const Monthly = ({ initialDate, holidays, handleDate }: MonthlyProps) => {
 							day: {
 								disabled: any;
 								formatedDate: string;
+								date: string;
 								weekDay: number;
 								holiday: { name: string; type: string };
 							},
@@ -98,7 +99,9 @@ const Monthly = ({ initialDate, holidays, handleDate }: MonthlyProps) => {
 								>
 									<div className="content">
                                         <div className={classnames({ date: true, disabled: day.weekDay === 7 })}>
-                                            <p>{day.formatedDate}</p>
+											<div className={classnames({today: moment(todayDate).isSame(day.date)})}>
+                                            	<p>{day.formatedDate}</p>
+											</div>
                                         </div>
                                     </div>
 								</div>
