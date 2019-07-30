@@ -12,12 +12,14 @@
 	}
 
 	.info {
+		display: flex;
 		font-family: 'Gotham Bold';
-		font-size: 30px;
+		font-size: 35px;
 		align-self: center;
 
         b {
             padding-right: 5px;
+			color: #dc5249;
         }
 	}
 

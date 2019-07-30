@@ -95,10 +95,13 @@ const Monthly = ({ initialDate, holidays, handleDate }: MonthlyProps) => {
 							return (
 								<div
 									key={`${day.formatedDate}-${index}`}
-									className={classnames({ day: true, disabled: day.disabled })}
+									className="day"
 								>
-									<div className="content">
+									<div className={classnames({ content: true, disabled: day.disabled })}>
                                         <div className={classnames({ date: true, disabled: day.weekDay === 7 })}>
+											<div>
+												<p>{daysOfTheweek[day.weekDay === 7 ? 0 : day.weekDay].slice(0, 3)}</p>
+											</div>
 											<div className={classnames({today: moment(todayDate).isSame(day.date)})}>
                                             	<p>{day.formatedDate}</p>
 											</div>

@@ -1,7 +1,9 @@
 .calendar__page {
 	background-color: #f2f3f2;
-	height: 100%;
+	min-height: 98vh;
+	width: 100%;
 	.calendar__page--content {
+		padding: 70px 10px;
 		.actions {
 			display: flex;
 			align-items: center;
@@ -9,7 +11,7 @@
 			padding-top: 20px;
 			.date {
 				font-family: 'Gotham Bold';
-				font-size: 30px;
+				font-size: 35px;
 			}
 			button {
 				background-color:transparent;
